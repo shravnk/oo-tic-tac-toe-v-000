@@ -4,7 +4,7 @@ class TicTacToe
       @board = [" "," "," "," "," "," "," "," "," "]
   end
 
-  @WIN_COMBINATIONS = [
+  WIN_COMBINATIONS = [
   [0,1,2],
   [3,4,5],
   [6,7,8],
@@ -92,7 +92,7 @@ end
 
 def won?
   results = nil
-  @WIN_COMBINATIONS.each do |winner|
+  WIN_COMBINATIONS.each do |winner|
     if winner.all?{|tester| @board[tester] == "X"}
       results = winner
     elsif winner.all?{|tester| @board[tester] == "O"}
