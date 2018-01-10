@@ -90,9 +90,9 @@ def play
   end
 end
 
-def won?(@board)
+def won?
   results = nil
-  WIN_COMBINATIONS.each do |winner|
+  @WIN_COMBINATIONS.each do |winner|
     if winner.all?{|tester| @board[tester] == "X"}
       results = winner
     elsif winner.all?{|tester| @board[tester] == "O"}
