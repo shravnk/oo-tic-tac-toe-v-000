@@ -1,5 +1,5 @@
 class TicTacToe
-  
+
   def initialize
       @board = [" "," "," "," "," "," "," "," "," "]
   end
@@ -27,7 +27,7 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def turn_count(@board)
+def turn_count
   turns = 0
   @board.each do |space|
     if space == "X" || space == "O"
@@ -37,7 +37,7 @@ def turn_count(@board)
   return turns
 end
 
-def current_player(@board)
+def current_player
   turns = turn_count(@board)
   if turns % 2 == 0
     "X"
@@ -46,18 +46,18 @@ def current_player(@board)
   end
 end
 
-def move(@board, index, current_player)
+def move(index, current_player)
   @board[index] = current_player
 end
 
-def position_taken?(@board, index)
+def position_taken?(index)
   !(@board[index].nil? || @board[index] == " ")
 end
-def valid_move?(@board, index)
+def valid_move?(index)
   index.between?(0,8) && !position_taken?(@board, index)
 end
 
-def turn(@board)
+def turn
 
   puts "Please enter 1-9:"
   input = gets.chomp
@@ -78,7 +78,7 @@ def turn(@board)
 
 end
 
-def play(@board)
+def play
   until over?(@board) || draw?(@board) do
     turn(@board)
   end
@@ -102,21 +102,21 @@ def won?(@board)
   return results
 end
 
-def full?(@board)
+def full?
   @board.all? do |spot|
     spot == "X" || spot == "O"
   end
 end
 
-def draw?(@board)
+def draw?
   !won?(@board) && full?(@board)
 end
 
-def over?(@board)
+def over?
   won?(@board) || full?(@board)
 end
 
-def winner(@board)
+def winner
   winning_board = won?(@board)
   if winning_board == nil
     return nil
