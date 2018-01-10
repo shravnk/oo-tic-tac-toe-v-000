@@ -38,7 +38,7 @@ def turn_count
 end
 
 def current_player
-  turns = turn_count(@board)
+  turns = turn_count
   if turns % 2 == 0
     "X"
   else
@@ -65,7 +65,7 @@ def turn
   index = input_to_index(input)
   validity = false
   while validity == false
-    if valid_move?(@board, index) == true
+    if valid_move?(index) == true
       validity = true
     else
       puts "Please enter 1-9:"
@@ -73,20 +73,20 @@ def turn
       index = input_to_index(input)
     end
   end
-  move(@board, index, current_player(@board))
-  display_board(@board)
+  move(index, current_player)
+  display_board
 
 
 end
 
 def play
-  until over?(@board) || draw?(@board) do
-    turn(@board)
+  until over? || draw? do
+    turn
   end
-  if draw?(@board)
+  if draw?
     puts "Cat's Game!"
   else
-    xo = winner(@board)
+    xo = winner
     puts "Congratulations #{xo}!"
   end
 end
@@ -110,15 +110,15 @@ def full?
 end
 
 def draw?
-  !won?(@board) && full?(@board)
+  !won? && full?
 end
 
 def over?
-  won?(@board) || full?(@board)
+  won? || full?
 end
 
 def winner
-  winning_board = won?(@board)
+  winning_board = won?
   if winning_board == nil
     return nil
   else
